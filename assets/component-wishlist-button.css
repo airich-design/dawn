@@ -1,0 +1,40 @@
+.wishlist-button {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  border-radius: 30px;
+  border: 2px solid #0a1119;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.wishlist-button__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  stroke: #0a1119;
+}
+
+.wishlist-button:active .wishlist-button__icon {
+  fill: #ff6633;
+}
+
+.wishlist-button:hover {
+  border: 2px solid #ff6633;
+}
+
+.wishlist-button:hover .wishlist-button__icon {
+  stroke: #ff6633;
+}
+
+.wishlist-button--liked {
+  border: 2px solid #ff6633;
+}
+
+.wishlist-button--liked .wishlist-button__icon {
+  stroke: #ff6633;
+  fill: #ff6633;
+}

@@ -2022,6 +2022,60 @@
         "quantity_selector": {
           "name": "Quantity selector"
         },
+        "payment_methods": {
+          "name": "Payment methods",
+          "settings": {
+            "label": "Payment and security Text",
+            "default": "Payment and security"
+          }
+        },
+        "call_service": {
+          "name": "Call service",
+          "settings": {
+            "call_service_image": {
+              "label": "Call service image"
+            },
+            "call_service_number": {
+              "label": "Call service number",
+              "default": "1-800-555-1234"
+            },
+            "call_service_text": {
+              "label": "Call service text",
+              "default": "Open Mo-Fri 10am-8pm"
+            }
+          }
+        },
+        "drawer-tab": {
+          "name": "Drawer-Tab",
+          "settings": {
+            "button_icon": {
+              "label": "Button icon"
+            },
+            "button_label": {
+              "label": "Button label",
+              "default": "Delivery in 2-3 days"
+            },
+            "title": {
+              "label": "Title",
+              "default": "Delivery"
+            },
+            "content": {
+              "label": "Content"
+            },
+            "icon": {
+              "label": "Icon",
+              "options__1": {
+                "label": "Back Arrow"
+              },
+              "options__2": {
+                "label": "Green Dot"
+              },
+              "options__3": {
+                "label": "Transporter"
+              }
+            }
+          }
+        },
         "variant_picker": {
           "name": "Variant picker",
           "settings": {
@@ -2068,6 +2122,17 @@
         "description": {
           "name": "Description"
         },
+        "image_collection_link": {
+          "name": "Image to collection link",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "collection": {
+              "label": "Collection"
+            }
+          }
+        },
         "sku": {
           "name": "SKU",
           "settings": {
@@ -2081,6 +2146,9 @@
               },
               "options__3": {
                 "label": "Uppercase"
+              },
+              "options__4": {
+                "label": "Title"
               }
             }
           }

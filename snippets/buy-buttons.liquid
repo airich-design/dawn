@@ -10,7 +10,7 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
-<div {{ block.shopify_attributes }}>
+<div>
   {%- if product != blank -%}
     {%- liquid
       assign gift_card_recipient_feature_active = false
@@ -25,7 +25,8 @@
     -%}
 
     <product-form
-      class="product-form"
+      class="product-form full-width"
+      style="margin: 0;"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
       data-section-id="{{ section.id }}"
     >
@@ -35,11 +36,10 @@
         </span>
         <span class="product-form__error-message"></span>
       </div>
-
       {%- form 'product',
         product,
         id: product_form_id,
-        class: 'form',
+        class: 'form full-width',
         novalidate: 'novalidate',
         data-type: 'add-to-cart-form'
       -%}
@@ -60,7 +60,7 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        <div class="product-form__buttons">
+        <div class="product-form__buttons full-width">
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -74,7 +74,7 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="product-form__submit button full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -88,11 +88,19 @@
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-                {{ 'products.product.add_to_cart' | t }}
+                <div>
+                  <span>
+                    {{ 'products.product.add_to_cart' | t }}
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.40759 4.90845L2.62268e-07 4.90845L0 3.40845L2.96296 3.40845L3.51834 3.40845L3.68034 3.93966L5.55537 10.0878L12.7639 10.0878L14.6109 3.46482L16.0558 3.86777L14.0558 11.0393L13.9028 11.5878L13.3333 11.5878L5 11.5878L4.44463 11.5878L4.28262 11.0566L2.40759 4.90845ZM14.6667 14.3335C14.6667 15.2539 13.9205 16 13 16C12.0795 16 11.3333 15.2539 11.3333 14.3335C11.3333 13.4131 12.0795 12.6669 13 12.6669C13.9205 12.6669 14.6667 13.4131 14.6667 14.3335ZM5.66667 16C6.58714 16 7.33333 15.2539 7.33333 14.3335C7.33333 13.4131 6.58714 12.6669 5.66667 12.6669C4.74619 12.6669 4 13.4131 4 14.3335C4 15.2539 4.74619 16 5.66667 16Z" fill="white"/>
+                  </svg>
+                </div>
               {%- endif -%}
             </span>
             {%- render 'loading-spinner' -%}
           </button>
+
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}
@@ -105,7 +113,7 @@
         <button
           type="submit"
           name="add"
-          class="product-form__submit button button--full-width button--primary"
+          class="product-form__submit button full-width button--primary"
           disabled
         >
           {{ 'products.product.sold_out' | t }}

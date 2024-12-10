@@ -5,7 +5,8 @@
   --alpha-badge-border: 0.1;
   --focused-base-outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   --focused-base-outline-offset: 0.3rem;
-  --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
 .product-card-wrapper .card,
@@ -79,7 +80,6 @@
 .page-width {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
 }
 
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
@@ -101,10 +101,6 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 }
 
 @media screen and (min-width: 750px) {
-  .page-width {
-    padding: 0 5rem;
-  }
-
   .header.page-width,
   .utility-bar__grid.page-width {
     padding-left: 3.2rem;
@@ -1343,12 +1339,14 @@ button.shopify-payment-button__button--unbranded {
 .customer button.disabled,
 .quantity__button.disabled {
   cursor: not-allowed;
-  opacity: 0.5;
 }
 
-.button--full-width {
-  display: flex;
+.full-width {
   width: 100%;
+}
+
+.button--uppercase {
+  text-transform: uppercase;
 }
 
 .button.loading {
@@ -1880,10 +1878,12 @@ input[type='checkbox'] {
 .quantity {
   color: rgba(var(--color-foreground));
   position: relative;
-  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+  width: 100%;
   display: flex;
   border-radius: var(--inputs-radius);
   min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+  align-items: center;
+  gap: 10px;
 }
 
 .quantity:after {
@@ -1928,14 +1928,16 @@ input[type='checkbox'] {
   background-color: transparent;
   border: 0;
   padding: 0 0.5rem;
-  width: 100%;
+  width: 24px;
+  height: 24px;
   flex-grow: 1;
   -webkit-appearance: none;
   appearance: none;
 }
 
 .quantity__button {
-  width: calc(4.5rem / var(--font-body-scale));
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   font-size: 1.8rem;
   border: 0;
@@ -3282,7 +3284,6 @@ details-disclosure > details {
   }
 
   .scroll-trigger.animate--slide-in {
-    transform: translateY(2rem);
   }
 
   .scroll-trigger:not(.scroll-trigger--offscreen).animate--fade-in {
@@ -3311,11 +3312,9 @@ details-disclosure > details {
 
   @keyframes slideIn {
     from {
-      transform: translateY(2rem);
       opacity: 0.01;
     }
     to {
-      transform: translateY(0);
       opacity: 1;
     }
   }

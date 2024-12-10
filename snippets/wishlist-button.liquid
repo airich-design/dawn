@@ -1,0 +1,46 @@
+{% comment %}
+  Like (Wishlist) button
+
+  Accepts:
+  - product: {Object} Product object
+
+  Usage:
+  {% render 'like-button', product: product %}
+{% endcomment %}
+
+<div>
+  <button
+    class="
+      wishlist-button
+      {% if product.metafields.likes.value > 0 %}wishlist-button--liked{% endif %}
+    "
+    type="button"
+    id="wishlistButton"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="wishlist-button__icon"
+    >
+      <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12 22C12 22 22.5 14.5749 22.5 7.54815C22.5 0.521375 13.184 -0.0194266 12 7.00826C10.816 -0.0194266 1.5 0.521375 1.5 8.08895C1.5 15.6565 12 22 12 22Z"
+            stroke-width="1.75"
+            stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const wishlistButton = document.getElementById('wishlistButton');
+    if (wishlistButton) {
+      wishlistButton.addEventListener('click', function () {
+        this.classList.toggle('wishlist-button--liked');
+      });
+    }
+  });
+</script>

@@ -1,5 +1,7 @@
 .footer {
   border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  position: relative;
+  z-index: -1;
 }
 
 .footer:not(.color-scheme-1) {
@@ -72,7 +74,6 @@
   .footer__content-bottom.scroll-trigger.animate--slide-in {
     animation: none;
     opacity: 1;
-    transform: inherit;
   }
 }
 

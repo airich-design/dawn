@@ -1,0 +1,151 @@
+/* Drawer */
+.product__info-drawer-trigger-wrapper {
+}
+
+.product__info-drawer-trigger {
+  display: flex;
+  padding: 8px 0px;
+  background-color: transparent;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 8px;
+  border-bottom: 1px solid rgba(192, 190, 190, 0.5);
+}
+
+.product__info-drawer-trigger-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.product__info-drawer-trigger-icon--small {
+  width: 9px;
+  height: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Drawer styles */
+.product__info-drawer-container {
+  position: relative;
+  margin: 0 !important;
+}
+
+.product__info-drawer-overlay {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  transition-property: display opacity;
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete;
+}
+
+/* Drawer styles */
+.product__info-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.7s ease-in-out;
+  display: flex;
+  z-index: 10;
+  overflow-y: auto;
+  padding: 48px;
+  flex-direction: column;
+  align-items: start;
+  gap: 24px;
+}
+
+@media screen and (max-width: 749px) {
+  .product__info-drawer {
+    padding: 48px 24px;
+  }
+}
+
+/* Max-Width only on Desktop */
+@media screen and (min-width: 750px) {
+  .product__info-drawer {
+    max-width: 650px;
+  }
+}
+
+/* Active states */
+.product__info-drawer-overlay-container.active .product__info-drawer {
+  transform: translateX(0);
+}
+
+.product__info-drawer-overlay-container.active .product__info-drawer-overlay {
+  display: block;
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+/* Drawer content close button */
+.product__info-drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+.product__info-drawer-content-title {
+  color: #0a1119;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.product__info-drawer-content-description {
+  color: #0a1119;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+/**
+ * We need to ensure the drawer is displayed above the navbar. Due to `position: sticky` on the navbar, 
+ * simply using z-index on its container isn’t enough because it creates its own stacking context.
+ * 
+ * The solution is to give the main product section (`.main-product-info`) a new stacking context only 
+ * when the drawer is active. By adding `position: relative; z-index: 500;` when the drawer is open,
+ * we ensure:
+ *  - The drawer appears seamlessly above the navbar.
+ *  - The cart pop-up and other functionalities remain unaffected when the drawer is closed.
+ */
+.main-product-info {
+  position: static;
+}
+
+.main-product-info:has(.product__info-drawer-container.active) {
+  position: relative;
+  z-index: 500;
+}

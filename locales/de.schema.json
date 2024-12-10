@@ -1678,6 +1678,60 @@
         "quantity_selector": {
           "name": "Mengenauswahl"
         },
+        "drawer-tab": {
+          "name": "Drawer-Tab",
+          "settings": {
+            "button_icon": {
+              "label": "Knopf-Icon"
+            },
+            "button_label": {
+              "label": "Knopf-Beschriftung",
+              "default": "Lieferzeit 4–7 Werktage"
+            },
+            "title": {
+              "label": "Titel",
+              "default": "Lieferzeit"
+            },
+            "content": {
+              "label": "Inhalt"
+            },
+            "icon": {
+              "label": "Icon",
+              "options__1": {
+                "label": "Zurück Pfeil"
+              },
+              "options__2": {
+                "label": "Green Dot"
+              },
+              "options__3": {
+                "label": "Transporter"
+              }
+            }
+          }
+        },
+        "payment_methods": {
+          "name": "Zahlungsmethoden",
+          "settings": {
+            "label": "Bezahlung und Sicherheit",
+            "default": "Bezahlung und Sicherheit"
+          }
+        },
+        "call_service": {
+          "name": "Service anrufen",
+          "settings": {
+            "call_service_image": {
+              "label": "Service-Bild"
+            },
+            "call_service_number": {
+              "label": "Servicenummer",
+              "default": "0231 1772630"
+            },
+            "call_service_text": {
+              "label": "Servicetext",
+              "default": "Verkauf Mo-Fr (8-18 Uhr)"
+            }
+          }
+        },
         "variant_picker": {
           "name": "Variantenauswahl",
           "settings": {
@@ -1715,6 +1769,14 @@
             "show_gift_card_recipient": {
               "label": "Formular für Empfängerinformationen für Geschenkgutscheine anzeigen",
               "info": "So können Käufer Geschenkgutscheine an einem bestimmten Datum mit einer persönlichen Nachricht versenden. [Mehr Informationen](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+            },
+            "show_wishlist_button": {
+              "label": "Zur Wunschliste hinzufügen-Schaltfläche anzeigen",
+              "info": "So können Kunden Produkte zur Wunschliste hinzufügen. "
+            },
+            "show_quantity_input": {
+              "label": "Mengeneingabe anzeigen",
+              "info": "So können Kunden die Menge ihrer Produkte eingeben."
             }
           }
         },
@@ -2006,6 +2068,17 @@
             }
           }
         },
+        "image_collection_link": {
+          "name": "Bild zu Kollektion link",
+          "settings": {
+            "image": {
+              "label": "Bild"
+            },
+            "collection": {
+              "label": "Kollektion"
+            }
+          }
+        },
         "sku": {
           "name": "SKU",
           "settings": {
@@ -2019,6 +2092,9 @@
               },
               "options__3": {
                 "label": "Großbuchstaben"
+              },
+              "options_4": {
+                "label": "Titel"
               }
             }
           }

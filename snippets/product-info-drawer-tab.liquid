@@ -1,0 +1,106 @@
+{% comment %}
+  Renders a product info drawer tab.
+  Accepts:
+  - product: {Object} Product liquid object
+  - block: {Object} Passing the block information
+
+  Usage:
+  {% render 'product-info-drawer-tab', product: product, block: block %}
+{% endcomment %}
+
+<div class="product__info-drawer-container">
+  <div class="product__info-drawer-trigger-wrapper" {{ block.shopify_attributes }}>
+    <button class="product__info-drawer-trigger" id="{{ block.id }}-trigger">
+      <div
+        class="product__info-drawer-trigger-icon"
+      >
+        <span
+          {% if block.settings.button_icon == 'green-dot' %}
+            class="product__info-drawer-trigger-icon--small"
+          {% endif %}
+        >
+          {% render 'icon-accordion', icon: block.settings.button_icon %}
+        </span>
+      </div>
+      <span class="full-width" style="text-align: start;">
+        {{ block.settings.button_label }}
+      </span>
+      <span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="17"
+          height="18"
+          viewBox="0 0 17 18"
+          fill="none"
+        >
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8636 8.46965L8.19698 0.802982L7.13632 1.86364L13.5227 8.24998L-1.60227e-05 8.24998L-1.56293e-05 9.74998L13.5781 9.74998L7.458 16.1482L8.54197 17.1851L15.8753 9.51839L16.3823 8.98832L15.8636 8.46965Z" fill="#0A1119"/>
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+
+{% assign id = block.id %}
+{% assign settings = block.settings %}
+
+<script>
+  {
+    const blockSettings = {{ settings | json }};
+    const id = "{{ id }}"
+    document.addEventListener('DOMContentLoaded', () => {
+      const trigger = document.getElementById(`${id}-trigger`);
+
+      const uuid = `${id}-overlay`;
+      const container = document.createElement("div");
+      container.className = "product__info-drawer-overlay-container"
+      container.id = uuid;
+      container.innerHTML = `
+        <div class="product__info-drawer">
+          <div class="product__info-drawer-content">
+            <button class="product__info-drawer-close" aria-label="Close Drawer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00001 10.0606L16.1168 17.1774L17.1774 16.1167L10.0607 8.99994L17.1774 1.88317L16.1168 0.822507L9.00001 7.93928L1.88323 0.82251L0.822571 1.88317L7.93935 8.99994L0.822573 16.1167L1.88323 17.1774L9.00001 10.0606Z" fill="#0A1119"/>
+              </svg>
+            </button>
+            <h2 class="product__info-drawer-content-title">
+              ${blockSettings.title}
+            </h2>
+            <p class="product__info-drawer-content-description">
+              ${blockSettings.content}
+            </p>
+          </div>
+        </div>
+      `;
+        
+
+      const overlay = document.createElement("div");
+      overlay.className = "product__info-drawer-overlay";
+      container.prepend(overlay);
+
+      document.body.append(container);
+
+      // Open drawer
+      trigger.addEventListener('click', () => {
+        const body = document.body;
+        container.classList.add('active');
+        body.classList.add('overflow-hidden');
+      });
+
+      // Close drawer from the close button
+      const closeBtn = document.getElementById(uuid).querySelector('.product__info-drawer-close');
+      closeBtn.addEventListener('click', () => {
+        const body = document.body;
+        const container = document.getElementById(uuid);
+        container.classList.remove('active');
+        body.classList.remove('overflow-hidden');
+      });
+      
+      overlay.addEventListener('click', () => {
+        const body = document.body;
+        container.classList.remove("active");
+        body.classList.remove('overflow-hidden');
+      });
+
+    });
+  }
+</script>

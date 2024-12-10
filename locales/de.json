@@ -106,7 +106,7 @@
   },
   "products": {
     "product": {
-      "add_to_cart": "In den Warenkorb legen",
+      "add_to_cart": "In den Warenkorb",
       "description": "Beschreibung",
       "on_sale": "Sale",
       "quantity": {
@@ -129,8 +129,8 @@
         "unit_price": "Grundpreis"
       },
       "share": "Dieses Produkt teilen",
-      "sold_out": "Ausverkauft",
-      "unavailable": "Nicht verfügbar",
+      "sold_out": "Benachrichtigen, wenn verfügbar",
+      "unavailable": "Benachrichtigen, wenn verfügbar",
       "vendor": "Anbieter",
       "video_exit_message": "{{ title }} öffnet das Video auf derselben Seite im Vollbildmodus.",
       "xr_button": "In deinem Bereich ansehen",
